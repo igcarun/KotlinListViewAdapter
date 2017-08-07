@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
+import com.myadapter.CustomListViewAdapter
 import kotlinx.android.synthetic.main.inflater_list_item.view.*
 import java.util.ArrayList
 
