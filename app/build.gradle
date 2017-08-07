@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.kotlin"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "SERVER_URL", '"http://someotherurl/"'
+        }
+        debug {
+            buildConfigField "String", "SERVER_URL", '"http://someurl/"'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+/*
+    productFlavors {
+        prod {
+            applicationId = "com.kotlin.prod"
+            versionName = "1.0-paid"
+        }
+
+        mock {
+            applicationId = "com.kotlin.mock"
+            versionName = "1.0-free"
+        }
+    }*/
+
+}
+
+kapt {
+    generateStubs = true
+}
+
+
+
+ext {
+    constraint_layout_version = '1.0.2'
+    appcompat_version = '26.0.0-alpha1'
+    junit_version = '4.12'
+    databinding_version = '2.3.1'
+    espresso_core_version = '2.2.2'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$espresso_core_version", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:$appcompat_version"
+    compile "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+    testCompile "junit:junit:$junit_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    kapt "com.android.databinding:compiler:$databinding_version"
+    compile "com.android.support:recyclerview-v7:$appcompat_version"
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.igcarun:Message:1.0.6'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+}
