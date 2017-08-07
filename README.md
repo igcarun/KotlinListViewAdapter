@@ -9,10 +9,12 @@ allprojects {
 			maven { url 'https://jitpack.io' }
 		}
 	}
-	```
+```
   
   add dependency in app/build.gradle file
-  ``` groovy
+ 
+ ``` groovy
   	dependencies {
 	        compile 'com.github.igcarun:KotlinListViewAdapter:1.0.0'
-	}```
+	}
+```
