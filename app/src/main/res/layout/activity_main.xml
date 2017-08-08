@@ -5,11 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="users"
-            type="com.kotlin.User" />
+        <variable name="apple" type="com.kotlin.Presenter"/>
+        <variable name="users" type="com.kotlin.dto.User" />
+        <variable name="orange" type="com.kotlin.HappyBirthday"/>
     </data>
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{users.name}"
+            android:onClick="@{(view) -> apple.onClick(view, users)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -31,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{Integer.toString(users.age)}"
+            android:onClick="@{(view) -> orange.summaTest(view)}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"

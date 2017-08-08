@@ -1,4 +1,4 @@
-package com.kotlin
+package com.kotlin.dto
 
 /**
  * Created by arun on 6/7/17.

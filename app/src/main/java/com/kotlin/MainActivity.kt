@@ -9,12 +9,23 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import com.kotlin.databinding.ActivityMainBinding
-import com.mylibrary.MainsActivity
+import com.kotlin.dto.User
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
-import kotlinx.android.synthetic.main.activity_main.*;
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Presenter, HappyBirthday{
+    override fun summaTest(view: View?) {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(this@MainActivity, "Success on summa test", Toast.LENGTH_SHORT).show()
+    }
+
+
+    override fun onClick(view: View?, user: User?) {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(this@MainActivity, "Success on click", Toast.LENGTH_SHORT).show()
+
+    }
+
 
     private var value : String? = null
 
@@ -24,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         val activity_binding: ActivityMainBinding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         val user = User("$value", 24, "Calibraint Technologies Pvt Ltd")
         activity_binding.users = user
+        activity_binding.apple = this@MainActivity
+        activity_binding.orange = this@MainActivity
         activity_binding.executePendingBindings()
         val mImageView = findViewById(R.id.activity_main_civ) as ImageView
         /* picasso.load("https://www.ussu.co.uk/ClubsSocieties/societies/People_and_Planet/PublishingImages/Go%20green%20sustainability%20society.png")
@@ -38,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         values.message()*/
 
         mImageView.setOnClickListener {
-            val intent: Intent = Intent(this@MainActivity, Main2Activity::class.java)
+            val intent: Intent = Intent(this@MainActivity, KotlinListDataBindingActivity::class.java)
             startActivity(intent)
         }
     }
